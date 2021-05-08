@@ -4,7 +4,7 @@
     "metadata": {
         "mapbox:autocomposite": true,
         "mapbox:type": "default",
-        "mapbox:origin": "dark-v9",
+        "mapbox:origin": "dark-v10",
         "mapbox:groups": {
             "1444933322393.2852": {
                 "name": "POI labels  (scalerank 1)",
