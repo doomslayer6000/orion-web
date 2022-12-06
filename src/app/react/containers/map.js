@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { easeCubic } from 'd3-ease';
 import { FlyToInterpolator } from 'react-map-gl';
-import match from 'functional-match';
+import { match }  from 'patturn';
 import {
   LOCATION_DISPLAY_TYPE_DOTS,
   LOCATION_DISPLAY_TYPE_PATH,

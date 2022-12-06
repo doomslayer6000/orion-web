@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { Elemental } from 'react-elemental';
-import { karlaBold, karlaRegular } from 'react-elemental-fonts';
 import Raven from 'raven-js';
 import PiwikReactRouter from 'piwik-react-router';
 import { createBrowserHistory } from 'history';

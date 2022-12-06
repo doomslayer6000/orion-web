@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Color from 'color';
 import { colors } from 'react-elemental';
-import match from 'functional-match';
+import { match }  from 'patturn';
 
 /**
  * Responsive dot used in the slider component.
