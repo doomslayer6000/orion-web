@@ -43,24 +43,25 @@ export default class Dot extends Component {
       backgroundColor = this.clickColor
     } else if (isHover) {
       backgroundColor = this.hoverColor
-
-
-      return (
-        <div
-          onMouseEnter={this.handleHoverChange(true)}
-          onMouseLeave={this.handleHoverChange(false)}
-          style={{
-            backgroundColor,
-            borderRadius: `${size}px`,
-            height: `${size}px`,
-            left: `${offset}px`,
-            position: 'relative',
-            transition: 'background-color 0.15s ease',
-            width: `${size}px`,
-            ...style,
-          }}
-          {...props}
-        />
-      );
     }
+
+
+    return (
+      <div
+        onMouseEnter={this.handleHoverChange(true)}
+        onMouseLeave={this.handleHoverChange(false)}
+        style={{
+          backgroundColor,
+          borderRadius: `${size}px`,
+          height: `${size}px`,
+          left: `${offset}px`,
+          position: 'relative',
+          transition: 'background-color 0.15s ease',
+          width: `${size}px`,
+          ...style,
+        }}
+        {...props}
+      />
+    );
   }
+}

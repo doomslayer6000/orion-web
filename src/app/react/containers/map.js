@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { easeCubic } from 'd3-ease';
-import { FlyToInterpolator } from 'react-map-gl';
-import { match } from 'patturn';
-import {
-  LOCATION_DISPLAY_TYPE_DOTS,
-  LOCATION_DISPLAY_TYPE_PATH,
-  LOCATION_DISPLAY_TYPE_HEATMAP,
-} from 'app/redux/reducers/options';
-import { setViewport } from 'app/redux/actions/map';
 import MapRoot from 'app/react/components/map';
+import { setViewport } from 'app/redux/actions/map';
+import {
+  LOCATION_DISPLAY_TYPE_DOTS, LOCATION_DISPLAY_TYPE_HEATMAP, LOCATION_DISPLAY_TYPE_PATH
+} from 'app/redux/reducers/options';
+import { easeCubic } from 'd3-ease';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { FlyToInterpolator } from 'react-map-gl';
+import { connect } from 'react-redux';
 import LocationParser from 'vis/location-parser';
 
 /**
