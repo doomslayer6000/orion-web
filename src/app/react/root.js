@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import Raven from 'raven-js';
 import Error from 'app/react/components/error';
 import routes from 'app/react/routes';
 import withWindowDimensions from 'app/react/hoc/with-window-dimensions';
@@ -28,7 +27,6 @@ class Root extends Component {
 
   componentDidCatch(error, info) {
     this.setState({ error });
-    Raven.captureException(error, { extra: info });
   }
 
   render() {

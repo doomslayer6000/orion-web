@@ -1,5 +1,4 @@
 import fetch from 'unfetch';
-import Raven from 'raven-js';
 
 const BASE_URL = process.env.ORION_SERVER_URL || '';
 
@@ -44,21 +43,7 @@ const resource = ({ id = 'fetch', endpoint, method, data = {} }, cb = (() => {})
       }
 
       return resp.json().then(({ data: respData } = {}) => {
-        Raven.captureBreadcrumb({
-          message: 'Network resource call complete',
-          category: 'resource',
-          data: {
-            request: {
-              endpoint,
-              method,
-              data,
-            },
-            response: {
-              data: respData,
-              status: resp.status,
-            },
-          },
-        });
+     
         return cb(null, respData);
       });
     })

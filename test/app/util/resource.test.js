@@ -1,16 +1,11 @@
 import fetch from 'unfetch';
-import Raven from 'raven-js';
 import resource from 'app/util/resource';
 
-jest.mock('raven-js', () => ({
-  captureBreadcrumb: jest.fn(),
-}));
 jest.mock('unfetch', () => jest.fn(() => new Promise((resolve) => resolve())));
 
 describe('Resource util', () => {
   beforeEach(() => {
     fetch.mockClear();
-    Raven.captureBreadcrumb.mockClear();
   });
 
   test('Setting base URL from build environment variable', () => {
@@ -91,30 +86,5 @@ describe('Resource util', () => {
       })),
       status: 200,
     })));
-
-    resource({
-      endpoint: '/endpoint',
-      method: 'POST',
-      data: { request: true },
-    }, (err, data) => {
-      const [[breadcrumb]] = Raven.captureBreadcrumb.mock.calls;
-
-      expect(err).toBeNull();
-      expect(data).toBeDefined();
-      expect(breadcrumb.category).toBe('resource');
-      expect(breadcrumb.data).toEqual({
-        request: {
-          endpoint: '/endpoint',
-          method: 'POST',
-          data: { request: true },
-        },
-        response: {
-          data: { response: true },
-          status: 200,
-        },
-      });
-
-      done();
-    });
   });
 });

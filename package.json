@@ -38,7 +38,6 @@
     "patturn": "^0.1.2",
     "piwik-react-router": "^0.12.1",
     "prop-types": "^15.6.2",
-    "raven-js": "^3.26.3",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-elemental": "https://lib.kevinlin.info/react-elemental/89e8ff26f90b2254cca88a14f3d59d08cadb96e4/release.tgz",
