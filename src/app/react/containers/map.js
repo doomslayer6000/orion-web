@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { easeCubic } from 'd3-ease';
 import { FlyToInterpolator } from 'react-map-gl';
-import { match }  from 'patturn';
+import { match } from 'patturn';
 import {
   LOCATION_DISPLAY_TYPE_DOTS,
   LOCATION_DISPLAY_TYPE_PATH,
@@ -71,13 +71,18 @@ class MapContainer extends Component {
     // Changes in viewport may require re-rendering the map layers. Evaluating this here would cause
     // the layer to remain static despite changes in viewport. Instead, we'll delay evaluation by
     // passing through a thunk that is evaluated on every render within the map root.
-    const layersThunk = () => [
-      match(locationDisplayType, [
-        [LOCATION_DISPLAY_TYPE_DOTS, () => this.locationParser.getScatterplotLayer()],
-        [LOCATION_DISPLAY_TYPE_PATH, () => this.locationParser.getLineLayer()],
-        [LOCATION_DISPLAY_TYPE_HEATMAP, () => this.locationParser.getScreenGridLayer()],
-      ])(),
-    ].filter(Boolean);
+    const layersThunk = () => {
+      if (LOCATION_DISPLAY_TYPE_DOTS === locationDisplayType) {
+        return [this.locationParser.getScatterplotLayer()]
+      } else if (LOCATION_DISPLAY_TYPE_PATH === locationDisplayType) {
+        return [this.locationParser.getLineLayer()]
+      } else if (LOCATION_DISPLAY_TYPE_HEATMAP === locationDisplayType) {
+        return [() => this.locationParser.getScreenGridLayer()]
+      } else {
+        console.warn("Unknown location display type: " + locationDisplayType)
+        return []
+      }
+    };
 
     return (
       <div style={{ position: 'absolute' }}>

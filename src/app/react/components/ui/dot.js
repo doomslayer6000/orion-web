@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Color from 'color';
 import { colors } from 'react-elemental';
-import { match }  from 'patturn';
+import { match } from 'patturn';
 
 /**
  * Responsive dot used in the slider component.
@@ -38,27 +38,29 @@ export default class Dot extends Component {
     const { isDragging, offset, size, style, ...props } = this.props;
     const { isHover } = this.state;
 
-    const backgroundColor = match(true, [
-      [isDragging, this.clickColor],
-      [isHover, this.hoverColor],
-    ], this.idleColor);
+    const backgroundColor = this.idleColor
+    if (isDragging) {
+      backgroundColor = this.clickColor
+    } else if (isHover) {
+      backgroundColor = this.hoverColor
 
-    return (
-      <div
-        onMouseEnter={this.handleHoverChange(true)}
-        onMouseLeave={this.handleHoverChange(false)}
-        style={{
-          backgroundColor,
-          borderRadius: `${size}px`,
-          height: `${size}px`,
-          left: `${offset}px`,
-          position: 'relative',
-          transition: 'background-color 0.15s ease',
-          width: `${size}px`,
-          ...style,
-        }}
-        {...props}
-      />
-    );
+
+      return (
+        <div
+          onMouseEnter={this.handleHoverChange(true)}
+          onMouseLeave={this.handleHoverChange(false)}
+          style={{
+            backgroundColor,
+            borderRadius: `${size}px`,
+            height: `${size}px`,
+            left: `${offset}px`,
+            position: 'relative',
+            transition: 'background-color 0.15s ease',
+            width: `${size}px`,
+            ...style,
+          }}
+          {...props}
+        />
+      );
+    }
   }
-}
