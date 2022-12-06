@@ -38,7 +38,7 @@ export default class Dot extends Component {
     const { isDragging, offset, size, style, ...props } = this.props;
     const { isHover } = this.state;
 
-    const backgroundColor = this.idleColor
+    let backgroundColor = this.idleColor
     if (isDragging) {
       backgroundColor = this.clickColor
     } else if (isHover) {
