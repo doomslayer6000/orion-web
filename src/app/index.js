@@ -44,7 +44,7 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Elemental fontOpts={{ primary: { regular: karlaRegular, bold: karlaBold } }}>
+        <Elemental>
           <BrowserRouter>
             <Root />
           </BrowserRouter>
